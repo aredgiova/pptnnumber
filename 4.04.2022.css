@@ -35,7 +35,7 @@ html{
 }
 .header{
     grid-area: header;
-    background-color: white;
+    background-color: red;
     text-align: right;
    
 }
