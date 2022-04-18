@@ -218,6 +218,7 @@ a{
         margin-bottom: -3em;
         width: 8em;
         color: #00FFED;
+        background-color: transparent;
     }
     .header{
         height: 100%;
