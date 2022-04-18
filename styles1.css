@@ -11,7 +11,7 @@ html{
 .grid-container{
     font-family: "Public Sans", sans-serif;
     font-size: 1.1em;
-    background-image: linear-gradient(135deg, #00B7D4, #505488, #2F3F80, #161569, #5A4894, #A950A1, #FF7CAE);
+    background-color: #052968;
     background-size: 500%;
     min-height: 100%;
 }
@@ -35,7 +35,7 @@ html{
 }
 .header{
     grid-area: header;
-    background-color: white;
+    background-color: #000D2A;
     text-align: right;
    
 }
@@ -48,12 +48,14 @@ html{
 
 .sidebar{
     grid-area: sidebar;
-    background-color: #139acf;
+    background-image: linear-gradient(240deg, #00FFED, #0BEAF0, #15D5F3, #20C0F6, #2AABF9, #3496FC, #3F81FF
+    );
     height: auto;
 }
 .main{
     grid-area: main;
-    background-color: white;
+    background-image: linear-gradient(-15deg, #0099AA, #008295, #006A7F, #00536A, #003C55, #00243F, #000D2A
+        );
     height: auto;
 }
 .footer{
@@ -63,7 +65,7 @@ html{
 @media (min-width: 600px){
     .grid-container{
         grid-template-columns: 15% auto;
-        grid-template-rows: 6em auto auto 30px ;
+        grid-template-rows: 6em auto auto 1px ;
         grid-template-areas: 
         "header header"
         "navbar main"
@@ -89,9 +91,10 @@ button{
     width: 17%;
     height: 3em;
     border: solid;
-    border-color: #00b5fc;
-    background-color: white;
+    border-color: #00ffed;
+    background-color: transparent;
     border-radius: 0.7em;
+    border-width: 0.1em;
     margin-top: 1.8em;
     margin-right: 1.5em;
 }
@@ -137,7 +140,7 @@ button{
 .cpadiv{
     width: 95%;
     height: auto;
-    background-color: #00b5fc;
+    background-image: linear-gradient(90deg, #00FFED, #00F3F0, #00E6F2, #00DAF5, #00CEF7, #00C1F9, #00B5FC);
     border-radius: 10px;
     padding-bottom: 1em;
 }
@@ -156,7 +159,8 @@ button{
     gap: 0.1em;
     border-radius: 5px;
     grid-template-rows: repeat(3, 1fr);
-    background-color: transparent;
+    background-image: linear-gradient(240deg, #00FFED, #0BEAF0, #15D5F3, #20C0F6, #2AABF9, #3496FC, #3F81FF
+    );
 }
 .iconos__img{
     width: 50%;
@@ -164,7 +168,8 @@ button{
 
 }
 .icono_title{
-    font-size: 0.8em;
+    font-size: 0.6em;
+    color: #052968;
 
 }
 a{
@@ -187,10 +192,10 @@ a{
     }
     .indicadores{
         grid-template-columns: repeat(2, 1fr);
+        height: 97%;
     }
     .navbar{
-        margin-bottom: -0.2em; 
-        margin-top: 0.1em;
+        margin-bottom: -1.6em; 
         height: 3em;      
     }
     .iconos__img{
@@ -198,14 +203,20 @@ a{
         margin-top: -0.6em;
     }
     .icono_title{
-        font-size: 0.5em;
+        font-size: 0.7em;
         margin-top: -1em;
         font-weight: 300;
+        color: #052968;
+    }
+    .menu{
+        margin-top: 0.5em;
+        margin-bottom: -0.5em;
     }
     button{
-        margin-top:  0.3em;
+        margin-top:  0.5em;
         margin-bottom: -3em;
         width: 8em;
+        color: #00FFED;
     }
     .header{
         height: 100%;
@@ -216,8 +227,14 @@ a{
         width: 100%;
     }
     .main{
-        height: 100%;
-        margin-top: 0.1em;
+        height: 105%;
+        background-image: linear-gradient(-15deg, #0099AA, #008295, #006A7F, #00536A, #003C55, #00243F, #000D2A
+        );
+        margin-top: 1em;
+        padding-bottom: 1em;
+    }
+    .sidebar{
+        margin-top: 0.5em;
     }
     
 }
@@ -241,17 +258,18 @@ a{
 
 .cverde{
     display: table-cell;
-    background-color: green;
+    background-image: linear-gradient(260deg, #73E900, #60DB06, #4DCD0D, #3ABF13, #26B019, #13A220, #009426);
     border-radius: 0.5em;
     font-size: 0.9em;
     display: flex;
     justify-content: center;
     align-items: center; 
     margin-bottom: 10%;
+    color: white;
 }
 @media (max-width: 600px){
     .cverde{
-        font-size: 0.7em;
+        font-size: 0.8em;
     }
 }
 
@@ -259,14 +277,16 @@ a{
 .crojo{
     display: table-cell;
     vertical-align: middle;
-    background-color: red;
+    background-image: linear-gradient(260deg, #FF0832, #ED073A, #DB0542, #CA044B, #B80353, #A6015B, #940063
+    );
     border-radius: 0.5em;
     font-size: 0.9em;
     vertical-align: middle;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10%;    
+    margin-bottom: 10%;
+    color: white;    
 }
 @media (max-width: 600px){
     .crojo{
@@ -279,31 +299,27 @@ a{
     justify-content: left;
     margin-left: 0.8em;
     padding-top: 0.8em;
+    color: #0031FF;
 }
 .numberpptn{
-    font-size: 1.7em;
+    font-size: 2em;
+    color: #031687;
 }
 @media (max-width: 600px){
     .numberpptn{
-        font-size: 1.4em;
+        font-size: 1.7em;
     }
     .nameindicador{
         font-size: 0.9em;
     }
 }
 .footer{
-    background-image: linear-gradient(65deg, #00B7D4, #505488, #2F3F80, #161569, #5A4894, #A950A1, #FF7CAE);
-    background-size: 500%;
-    animation: fanimado 100s infinite;
+    background-color: transparent;
 }
-@keyframes fanimado{
-    0%{
-        background-position: 0% 50% ;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0% 50%;
-    }
+.text{
+    color: #051687;
+    font-size: 0.9em;
+}
+.tittle{
+    font-size: 0.9em;
 }
