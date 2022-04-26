@@ -1,46 +1,108 @@
-console.log("Mitesoro");
+let GBP_USD = {
+    nombre: 'GBP/USD',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
+let EUR_USD = {
+    nombre: 'EUR/USD',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
-var GBP_USD = 21.32565;
-var EUR_USD = 21.32565;
-var USD_YEN = 21.32565;
-var GBP_EUR = 21.32565;
-var EUR_YEN = 21.32565;
-var GBP_YEN = 21.32565;
+let USD_YEN = {
+    nombre: 'USD/YEN',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
-var GBP_USD_P= 22.32565;
-var EUR_USD_P= 22.32565;
-var USD_YEN_P= 22.32565;
-var GBP_EUR_P= 22.32565;
-var EUR_YEN_P= 22.32565;
-var GBP_YEN_P= 22.32565;
+let GBP_EUR = {
+    nombre: 'GBP/EUR',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
-var GBP_USD_N= 20.32565;
-var EUR_USD_N= 20.32565;
-var USD_YEN_N= 20.32565;
-var GBP_EUR_N= 20.32565;
-var EUR_YEN_N= 20.32565;
-var GBP_YEN_N= 20.32565;
+let EUR_YEN = {
+    nombre: 'EUR/YEN',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
+let GBP_YEN = {
+    nombre: 'GBP/YEN',
+    neutro: 0,
+    verde: 1,
+    rojo: -1
+};
 
+const grupoDivisas = [GBP_USD, EUR_USD, USD_YEN, GBP_EUR, EUR_YEN, GBP_YEN];
 
-document.getElementById("gbp_usd").innerHTML = GBP_USD;
-document.getElementById("eur_usd").innerHTML = EUR_USD;
-document.getElementById("usd_yen").innerHTML = USD_YEN;
-document.getElementById("gbp_eur").innerHTML = GBP_EUR;
-document.getElementById("eur_yen").innerHTML = EUR_YEN;
-document.getElementById("gbp_yen").innerHTML = GBP_YEN;
+d3.csv("./csv/csvared.csv", function(data) {
+    asignarValoresCsv(data);
+    renderizarNuevosValores();
+});
 
-document.getElementById("gbp_usd_p").innerHTML = GBP_USD_P;
-document.getElementById("eur_usd_p").innerHTML = EUR_USD_P;
-document.getElementById("usd_yen_p").innerHTML = USD_YEN_P;
-document.getElementById("gbp_eur_p").innerHTML = GBP_EUR_P;
-document.getElementById("eur_yen_p").innerHTML = EUR_YEN_P;
-document.getElementById("gbp_yen_p").innerHTML = GBP_YEN_P;
+function renderizarNuevosValores() {
+    document.getElementById("gbp_usd").innerHTML = GBP_USD.neutro;
+    document.getElementById("eur_usd").innerHTML = EUR_USD.neutro;
+    document.getElementById("usd_yen").innerHTML = USD_YEN.neutro;
+    document.getElementById("gbp_eur").innerHTML = GBP_EUR.neutro;
+    document.getElementById("eur_yen").innerHTML = EUR_YEN.neutro;
+    document.getElementById("gbp_yen").innerHTML = GBP_YEN.neutro;
 
-document.getElementById("gbp_usd_n").innerHTML = GBP_USD_N;
-document.getElementById("eur_usd_n").innerHTML = EUR_USD_N;
-document.getElementById("usd_yen_n").innerHTML = USD_YEN_N;
-document.getElementById("gbp_eur_n").innerHTML = GBP_EUR_N;
-document.getElementById("eur_yen_n").innerHTML = EUR_YEN_N;
-document.getElementById("gbp_yen_n").innerHTML = GBP_YEN_N;
+    document.getElementById("gbp_usd_p").innerHTML = GBP_USD.verde;
+    document.getElementById("eur_usd_p").innerHTML = EUR_USD.verde;
+    document.getElementById("usd_yen_p").innerHTML = USD_YEN.verde;
+    document.getElementById("gbp_eur_p").innerHTML = GBP_EUR.verde;
+    document.getElementById("eur_yen_p").innerHTML = EUR_YEN.verde;
+    document.getElementById("gbp_yen_p").innerHTML = GBP_YEN.verde;
+
+    document.getElementById("gbp_usd_n").innerHTML = GBP_USD.rojo;
+    document.getElementById("eur_usd_n").innerHTML = EUR_USD.rojo;
+    document.getElementById("usd_yen_n").innerHTML = USD_YEN.rojo;
+    document.getElementById("gbp_eur_n").innerHTML = GBP_EUR.rojo;
+    document.getElementById("eur_yen_n").innerHTML = EUR_YEN.rojo;
+    document.getElementById("gbp_yen_n").innerHTML = GBP_YEN.rojo;
+}
+
+// const myForm = document.getElementById("myForm");
+// const csvFile = document.getElementById("csvFile");
+
+function asignarValoresCsv(str, delimiter = ";") {
+    /* str = str.replace(/['"]+/g, '');
+    console.log(str);
+
+    const rows = str.split(/\r\n|\n\r|\n|\r/);
+    rows.shift();
+    console.log('rows', rows); */
+
+    str.forEach(element => {
+        let rowSplited = element["PARDIV; PPTN; PPTNP; PPTNN "].split(delimiter);
+        grupoDivisas.forEach(divisa => {
+            if (divisa.nombre === rowSplited[0]) {
+                divisa.neutro = rowSplited[1];
+                divisa.verde = rowSplited[2];
+                divisa.rojo = rowSplited[3];
+            }
+        });
+    });
+}
+
+/* myForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const input = csvFile.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const text = e.target.result;
+        asignarValoresCsv(text);
+        renderizarNuevosValores();
+    };
+
+    reader.readAsText(input);
+}); */
